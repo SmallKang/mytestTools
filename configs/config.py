@@ -4,7 +4,7 @@
 
 testversion=''
 
-appPath = r"D:\devSoft\nodejs\node_global\node_modules\settings_apk-debug.apk"
-
+AppPath = r"D:\autotest\mytestTools\files\apks\pinduoduo.apk"
+TestAppActivity = r"com.lbe.security.miui/com.android.packageinstaller.permission.ui.GrantPermissionsActivity"
 
 Test_mechine_type = "Android"
