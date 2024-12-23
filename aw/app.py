@@ -7,9 +7,7 @@ import subprocess
 import logfile
 import time
 
-#实例化log对象
-logFile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs/applog.log')
-log = logfile.Logger('applog', logFile)
+
 
 
 '''
@@ -17,7 +15,9 @@ log = logfile.Logger('applog', logFile)
 '''
 class App:
     def __init__(self) -> None:
-        pass
+        #实例化log对象
+        logFile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs/applog.log')
+        self.log = logfile.Logger('applog', logFile)
 
     #安装app
     def appInstall(self, appPath):
@@ -36,10 +36,10 @@ class App:
 
         #日志记录安装结果
         if "Success" in re[1].decode():
-            log.log("apk install success!")
+            self.log.log("apk install success!")
             return True
         else:
-            log.log("apk install faild, reason is " + re[1].decode() + "!")
+            self.log.log("apk install faild, reason is " + re[1].decode() + "!")
             return False
     
     #卸载app

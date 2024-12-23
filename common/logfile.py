@@ -20,3 +20,7 @@ class Logger:
             self._logger.info(msg)
 
     
+if __name__ == '__main__':
+    logFile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs/phone.log')
+    Log = Logger('phone', logFile)
+    Log.log("this is phoneLog")

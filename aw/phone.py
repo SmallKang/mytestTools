@@ -4,10 +4,16 @@
 
 import os
 import subprocess
+from logfile import Logger as Log
 
-class ApkInfo():
-    def __init__(self, apkPath) -> None:
-        self.apkPath = apkPath
+class PhoneInfo():
+    def __init__(self) -> None:
+        #实例化log对象
+        logFile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs/applog.log')
+        self.Log = Log('phone.log', logFile)
+
+        # self.apkPath = apkPath
+        
 
     def getMechine(self):
         cmdGetMechineInfo = "adb devices"
@@ -15,6 +21,7 @@ class ApkInfo():
         # 机器编码
         deviceinfo = subprocess.Popen(cmdGetMechineInfo, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).stdout.readlines()
         device = deviceinfo[1].decode().split()[0]
+        self.Log.log('mechine num is ' + device)
         return device
 
     # 获取手机信息：型号、版本、品牌、设备名
@@ -40,16 +47,21 @@ class ApkInfo():
         l_list["brand"] = brand[0].decode()
         l_list["device"] = device[0].decode()
 
+        self.Log.log('device info is ' + l_list)
+
         return l_list
 
-    # 获取手机分辨率
+    # 获取手机分辨率, 返回 x, y
     def get_pix(self, devices):
         result = os.popen("adb -s " + devices + " shell wm size", "r")
-        return result.readline().split("Physical size:")[1]
+        x, y =result.readline().split("Physical size:")[1].replace(' ', '').split('x')
+        return int(x), int(y)
 
 if __name__ == "__main__":
-    device = ApkInfo()
-    print(device.getPhoneInfo(getMechine()))
-    print(device.get_pix(getMechine())) #分辨率
-    print(device.getPhoneInfo(getMechine())['release'])
+    device = PhoneInfo()
+    # print(device.getPhoneInfo(getMechine()))
+    x, y = device.get_pix(device.getMechine())
+    # print(size) #分辨率
+    print(x/2, y/2)
+    # print(device.getPhoneInfo(getMechine())['release'])
     
