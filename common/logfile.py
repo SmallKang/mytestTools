@@ -9,7 +9,7 @@ import sys, os
 class Logger:
     def __init__(self, logName, logFile) -> None:
         self._logger = logging.getLogger(logName)
-        handler = lh.RotatingFileHandler(logFile, maxBytes=10*1024*1024, backupCount=10)
+        handler = lh.RotatingFileHandler(logFile, maxBytes=10*1024*1024, backupCount=10, encoding='utf-8')
         formatter = logging.Formatter("[%(asctime)s]:[%(message)s]")
         handler.setFormatter(formatter)
         self._logger.addHandler(handler)
@@ -20,7 +20,7 @@ class Logger:
             self._logger.info(msg)
 
     
-if __name__ == '__main__':
-    logFile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs/phone.log')
-    Log = Logger('phone', logFile)
-    Log.log("this is phoneLog")
+# if __name__ == '__main__':
+#     logFile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'logs/phone.log')
+#     Log = Logger('phone', logFile)
+#     Log.log("this is phoneLog")
