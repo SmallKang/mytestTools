@@ -1,6 +1,10 @@
 {
     "python.analysis.extraPaths": [
         "./common",
-        "./aw"
+        "./aw",
+        "./pages/weixin",
+        "./configs",
+        "./logs",
+        ".scripts",
     ]
 }

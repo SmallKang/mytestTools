@@ -4,7 +4,6 @@ app应用相关
 
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'common'))
-print(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'common'))
 import subprocess
 import logfile as logfile
 import time
@@ -24,7 +23,7 @@ class App:
         self.log = logfile.Logger('applog', logFile)
 
         device = PhoneInfo()
-        d = u2.connect(device.getMechine)
+        self.d = u2.connect(device.getMechine())
 
     #安装app
     def appInstall(self, appPath=None):
@@ -111,12 +110,12 @@ class App:
     #启动应用    
     def openApp(self, packageName):
         self.packageName = packageName
-        d.app_start(self.packageName)
+        self.d.app_start(self.packageName)
 
     #关闭应用    
-    def openApp(self, packageName):
+    def closeApp(self, packageName):
         self.packageName = packageName
-        d.app_stop(self.packageName)
+        self.d.app_stop(self.packageName)
 
 
 
@@ -124,14 +123,14 @@ class App:
 
 if __name__ == "__main__":
     app = App()
-    device = PhoneInfo()
-    # app.appInstall()
-    # time.sleep(5)
-    # app.uninstallApp("com.xunmeng.pinduoduo")
-    # app.startActivity('com.tencent.mm/.ui.LauncherUI')
-    print(device.getMechine())
-    d = u2.connect(device.getMechine())
-    # d.app_start('com.tencent.mm')
-    d.app_stop('com.tencent.mm')
+    # device = PhoneInfo()
+    # # app.appInstall()
+    # # time.sleep(5)
+    # # app.uninstallApp("com.xunmeng.pinduoduo")
+    # # app.startActivity('com.tencent.mm/.ui.LauncherUI')
+    # print(device.getMechine())
+    # d = u2.connect(device.getMechine())
+    # # d.app_start('com.tencent.mm')
+    # d.app_stop('com.tencent.mm')
 
 

@@ -1,0 +1,5 @@
+[2024-12-23 22:15:51,255]:[hahahahahahahahaha]
+[2024-12-25 18:29:39,365]:[run commad: adb device and re&msg is CompletedProcess(args='adb device', returncode=1, stdout='', stderr='adb.exe: unknown command device\n')]
+[2024-12-25 18:29:59,381]:[run commad: adb device and re&msg is CompletedProcess(args='adb device', returncode=1, stdout='', stderr='adb.exe: unknown command device\n')]
+[2024-12-25 18:30:35,332]:[run commad: adb devices and re&msg is CompletedProcess(args='adb devices', returncode=0, stdout='List of devices attached\n9DIVJZG6L7CEYXFY\tdevice\n192.168.100.101:5555\tdevice\n\n', stderr='')]
+[2024-12-25 18:31:33,509]:[run commad: adb devices and re&msg is CompletedProcess(args='adb devices', returncode=0, stdout='List of devices attached\n9DIVJZG6L7CEYXFY\tdevice\n192.168.100.101:5555\tdevice\n\n', stderr='')]
